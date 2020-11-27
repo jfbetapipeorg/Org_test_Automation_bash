@@ -38,7 +38,7 @@ pipelines:
                 auto:
                   language: node
                   versions:
-                    - 14 
+                    - 10
         execution:
           onExecute:
             - echo "Executing matrix step on ${steplet_id}"
