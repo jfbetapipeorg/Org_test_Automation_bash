@@ -8,7 +8,7 @@ pipelines:
             - echo "Preparing the code base"
             - npm install
             - echo "Installed npm"
-      - name: matrixrs_2e_3r_example
+      - name: S_Matrix_0040
         type: Matrix
         stepMode: Bash
         configuration:
