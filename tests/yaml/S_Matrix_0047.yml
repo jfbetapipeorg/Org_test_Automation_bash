@@ -7,9 +7,10 @@ pipelines:
         stepletMultipliers:
           fastFail: true
           allowFailures:
-             environmentVariables:
+             - environmentVariables:
                  - delay: 1
                    fail: 'true'
+             - environmentVariables:
                  - delay: 2
                    fail: 'true'
           environmentVariables:
