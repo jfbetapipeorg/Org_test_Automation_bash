@@ -8,11 +8,11 @@ pipelines:
           fastFail: true
           allowFailures:
              - environmentVariables:
-                 - delay: 1
-                   fail: 'true'
+                 delay: 1
+                 fail: 'true'
              - environmentVariables:
-                 - delay: 2
-                   fail: 'true'
+                 delay: 2
+                 fail: 'true'
           environmentVariables:
             - delay: 1
               fail: 'true'
