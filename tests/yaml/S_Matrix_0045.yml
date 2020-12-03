@@ -14,7 +14,7 @@ pipelines:
             - delay: 1
               fail: 'true'
             - delay: 2
-              fail: 'true'
+              fail: 'false'
             - delay: 3
               fail: 'false'
             - delay: 5
