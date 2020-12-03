@@ -8,10 +8,6 @@ pipelines:
           environmentVariables:             # Sets of environment variables for steplets
             - animal:    dog                # - Set 1
               mineral:   copper
-            - animal:    goat               # - Set 2
-              mineral:   iron
-            - animal:    lizard             # - Set 3
-              mineral:   lead
           runtimes:                         # Runtimes for steplets
             - type: image
               image:
