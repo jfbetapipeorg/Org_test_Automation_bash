@@ -34,6 +34,9 @@ pipelines:
             
       - name: output
         type: PostMatrix
+        configuration:
+          inputSteps:
+            - name: S_Matrix_0048
         execution:
           onExecute:
             - echo "Executing the output step"
