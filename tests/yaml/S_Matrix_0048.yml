@@ -32,8 +32,8 @@ pipelines:
             - echo "Executing matrix step on ${steplet_id}"
             - echo "Variation animal = ${animal}, bird = ${bird}"
             
-     - name: output
-       type: PostMatrix
-       execution:
+      - name: output
+        type: PostMatrix
+        execution:
           onExecute:
             - echo "Executing the output step"
