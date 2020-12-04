@@ -1,7 +1,7 @@
 pipelines:
   - name: S_Matrix_0043
     steps:           
-      - name: matrix_step
+      - name: S_Matrix_0043
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
