@@ -20,7 +20,7 @@ pipelines:
                 auto:
                   language: node
                   versions:
-                    - 8.17.19             # Wrong Version 
+                    - 0.17.19             # Wrong Version 
           
         execution:
           onExecute:
