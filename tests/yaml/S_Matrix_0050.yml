@@ -14,7 +14,7 @@ pipelines:
                 auto:
                   language: java
                   versions:
-                    - 13.0
+                    - 13
             - type: image
               image:
                 auto:
