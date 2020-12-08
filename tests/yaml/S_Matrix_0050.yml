@@ -1,30 +1,26 @@
 pipelines:
   - name: S_Matrix_0050
     steps:
-      - name: matrix_step
+      - name: S_Matrix_0050
         type: Matrix
         stepMode: Bash 
         stepletMultipliers:
           environmentVariables:             # Sets of environment variables for steplets
             - animal:    dog                # - Set 1
               mineral:   copper
-            - animal:    goat               # - Set 2
-              mineral:   iron
-            - animal:    lizard             # - Set 3
-              mineral:   lead
           runtimes:                         # Runtimes for steplets
             - type: image
               image:
                 auto:
                   language: java
                   versions:
-                    - 13.0
+                    - 13
             - type: image
               image:
                 auto:
                   language: node
                   versions:
-                    - 8.17.19             # Wrong Version 
+                    - 0.17.19             # Wrong Version 
           
         execution:
           onExecute:

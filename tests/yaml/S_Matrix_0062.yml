@@ -1,7 +1,7 @@
 pipelines:
-  - name: S_Matrix_0045
+  - name: S_Matrix_0062
     steps:           
-      - name: S_Matrix_0045
+      - name: S_Matrix_0062
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
@@ -26,4 +26,4 @@ pipelines:
             - echo "I am on matrix step"
             - |
               [ $fail == 'false' ] 
-            - ls -l .          
+            - ls -l .    

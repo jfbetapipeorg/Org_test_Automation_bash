@@ -1,7 +1,7 @@
 pipelines:
   - name: S_Matrix_0053
     steps:
-      - name: matrix_step
+      - name: S_Matrix_0053
         type: Matrix
         stepMode: Bash 
         stepletMultipliers:
@@ -15,13 +15,13 @@ pipelines:
                 custom:
                   name: shippabledocker/jfreq # Right Image name
                   tag: latest
-                  registry: docker_v
+                  registry: i_dockerRegistry
             - type: image
               image:
                 custom:
                   name: shippabledocker/jfreqqq # Wrong Image name
                   tag: latest
-                  registry: docker_v
+                  registry: i_dockerRegistry
        
         execution:
           onExecute:

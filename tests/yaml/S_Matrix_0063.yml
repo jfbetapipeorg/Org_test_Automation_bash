@@ -1,7 +1,8 @@
+
 pipelines:
-  - name: S_Matrix_0045
+  - name: S_Matrix_0063
     steps:           
-      - name: S_Matrix_0045
+      - name: S_Matrix_0063
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
@@ -18,7 +19,7 @@ pipelines:
             - delay: 3
               fail: 'false'
             - delay: 5
-              fail: 'false' 
+              fail: 'true' 
         execution:
           onStart:
             - sleep "$delay"
@@ -26,4 +27,4 @@ pipelines:
             - echo "I am on matrix step"
             - |
               [ $fail == 'false' ] 
-            - ls -l .          
+            - ls -l .    

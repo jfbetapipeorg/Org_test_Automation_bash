@@ -1,22 +1,18 @@
 pipelines:
-  - name: S_Matrix_0045
+  - name: S_Matrix_0060
     steps:           
-      - name: S_Matrix_0045
+      - name: S_Matrix_0060
         type: Matrix
         stepMode: Bash
         stepletMultipliers:
           fastFail: true
-          allowFailures:
-            - environmentVariables:
-                delay: 1
-                fail: 'true'
           environmentVariables:
             - delay: 1
-              fail: 'true'
+              fail: 'false'
             - delay: 2
               fail: 'false'
             - delay: 3
-              fail: 'false'
+              fail: 'true'
             - delay: 5
               fail: 'false' 
         execution:
@@ -26,4 +22,4 @@ pipelines:
             - echo "I am on matrix step"
             - |
               [ $fail == 'false' ] 
-            - ls -l .          
+            - ls -l . 
