@@ -1,0 +1,20 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: S_NpmBuild_0007_GitRepo
+    type: GitRepo
+    configuration:
+      gitProvider: s_gitHub
+      path: {{ .Values.GitHub.Org_test_Automation_bash.path }}
+      branches:
+        include: {{gitBranch}}
+
+pipelines:
+  - name: pipeline_S_NpmBuild_0007
+    steps:
+      - name: S_NpmBuild_0007
+        type: NpmBuild
+        configuration:
+          inputResources:
+            - name: S_NpmBuild_0007_GitRepo

@@ -1,0 +1,20 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: S_GradleBuild_0003_PropertyBag
+    type: PropertyBag
+    configuration:
+      variableOne: test
+
+pipelines:
+  - name: pipeline_S_GradleBuild_0003
+    steps:
+      - name: S_GradleBuild_0003
+        type: GradleBuild
+        configuration:
+          inputResources:
+            - name: S_GradleBuild_0003_PropertyBag
+          integrations:
+            - name: s_artifactory
+          gradleCommand: myGradleCommand

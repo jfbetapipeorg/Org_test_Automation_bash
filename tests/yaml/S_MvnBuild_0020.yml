@@ -1,0 +1,26 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: S_MvnBuild_0020_GitRepo
+    type: GitRepo
+    configuration:
+      gitProvider: s_gitHub
+      path: {{ .Values.GitHub.Org_test_Automation_bash.path }}
+      branches:
+        include: {{gitBranch}}
+
+pipelines:
+  - name: pipeline_S_MvnBuild_0020
+    steps:
+      - name: S_MvnBuild_0020
+        type: MvnBuild
+        configuration:
+          inputResources:
+            - name: S_MvnBuild_0020_GitRepo
+          integrations:
+            - name: s_artifactory
+          configFileName: configName
+          configFileLocation: configLocation
+          deployerSnapshotRepo: resolver-snapshot
+          deployerReleaseRepo: resolver-release
