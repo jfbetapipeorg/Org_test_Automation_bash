@@ -2,7 +2,7 @@ template: true
 valuesFilePath: ../values/gitRepoValues.yml
 
 resources:
-  - name: S_MvnBuild_0025_GitRepo
+  - name: S_MvnBuild_0027_GitRepo
     type: GitRepo
     configuration:
       gitProvider: s_gitHub
@@ -11,15 +11,20 @@ resources:
         include: {{gitBranch}}
 
 pipelines:
-  - name: pipeline_S_MvnBuild_0025
+  - name: pipeline_S_MvnBuild_0027
     steps:
-      - name: S_MvnBuild_0025
+      - name: S_MvnBuild_0027
         type: MvnBuild
         configuration:
           inputResources:
-            - name: S_MvnBuild_0025_GitRepo
+            - name: S_MvnBuild_0027_GitRepo
           integrations:
             - name: s_artifactory
           configFileName: config
           configFileLocation: .
-          sourceLocation: tests/mvn
+        execution:
+          onStart:
+            - pushd $(find_resource_variable $inputGitRepoResourceName resourcePath)
+            - mv tests/mvn/* .
+            - ls
+            - popd
