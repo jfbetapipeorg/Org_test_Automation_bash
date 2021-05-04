@@ -1,0 +1,19 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: S_MvnBuild_5680_0003_PropertyBag
+    type: PropertyBag
+    configuration:
+      variableOne: test
+
+pipelines:
+  - name: pipeline_S_MvnBuild_5680_0003
+    steps:
+      - name: S_MvnBuild_5680_0003
+        type: MvnBuild
+        configuration:
+          inputResources:
+            - name: S_MvnBuild_5680_0003_PropertyBag
+          integrations:
+            - name: s_artifactory
