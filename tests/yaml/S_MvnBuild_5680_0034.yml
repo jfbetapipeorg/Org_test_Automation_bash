@@ -17,7 +17,7 @@ pipelines:
         type: MvnBuild
         configuration:
           environmentVariables:
-            my_command: "clean test"
+            my_command: "'clean test'"
           inputResources:
             - name: S_MvnBuild_5680_0034_GitRepo
           integrations:
