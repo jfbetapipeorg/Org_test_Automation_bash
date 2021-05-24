@@ -29,11 +29,11 @@ pipelines:
               - owner
               - benha
             notifications:
-              - integrationName: mySMTPCreds
+              - integrationName: testSMTP
                 recipients:
                   - benha@jfrog.com
                   - example@email.com
-              - integrationName: mySlack
+              - integrationName: testSlack
                 recipients:
                   - '#channel'
                   - '@example@email.com'
