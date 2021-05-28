@@ -72,4 +72,4 @@ pipelines:
         execution:
           onComplete:
             - jfrog rt repo-delete helmgeneric --quiet || true
-            - helm3 delete simplehelm-generic-$run_id --namespace $K8S_NAMESPACE
+            - helm3 delete simplehelm-generic-$run_id
