@@ -66,10 +66,6 @@ pipelines:
               idleName: ${idle_name}
               liveName: ${live_name}
         execution:
-          onStart:
-            - kubectl version
-            - kubectl get service ${live_name} -n ${k8s_namespace} || echo $?
           onComplete:
             - jfrog rt repo-delete simplecharts --quiet || true
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
-            - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true
