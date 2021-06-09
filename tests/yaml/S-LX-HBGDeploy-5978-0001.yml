@@ -47,7 +47,7 @@ pipelines:
             - jfrog rt repo-delete simplecharts --quiet
 
       - name: S_LX_HBGDeploy_5978_0001_2
-        type: HelmDeploy
+        type: HelmBlueGreenDeploy
         configuration:
           inputSteps:
             - name: S_LX_HBGDeploy_5978_0001_1
