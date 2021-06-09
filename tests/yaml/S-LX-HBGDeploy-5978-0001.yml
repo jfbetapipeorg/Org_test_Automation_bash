@@ -25,6 +25,8 @@ pipelines:
         readOnly:
           blue_release_name: "blue-simplehelm-${run_id}"
           green_release_name: "green-simplehelm-${run_id}"
+          idle_name: "idle-simplehelm-${run_id}"
+          live_name: "live-simplehelm-${run_id}"
           k8s_namespace: "pipe-master-pool"
     steps:
       - name: S_LX_HBGDeploy_5978_0001_1
@@ -58,7 +60,13 @@ pipelines:
           namespace: ${k8s_namespace}
           blueReleaseName: ${blue_release_name}
           greenReleaseName: ${green_release_name}
+          roleServices:
+            - blueReferenceName: ${blue_release_name}
+              greenReferenceName: ${green_release_name}
+              idleName: ${idle_name}
+              liveName: ${live_name}
         execution:
           onComplete:
             - jfrog rt repo-delete simplecharts --quiet || true
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace}
+            - kubectl delete service ${idle_name} --namespace ${k8s_namespace}
