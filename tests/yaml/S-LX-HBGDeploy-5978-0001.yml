@@ -67,6 +67,7 @@ pipelines:
               liveName: ${live_name}
         execution:
           onStart:
+            - kubectl version
             - kubectl get service ${live_name} -n ${k8s_namespace} || echo $?
           onComplete:
             - jfrog rt repo-delete simplecharts --quiet || true
