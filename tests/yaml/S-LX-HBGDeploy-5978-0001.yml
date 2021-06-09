@@ -61,8 +61,8 @@ pipelines:
           blueReleaseName: ${blue_release_name}
           greenReleaseName: ${green_release_name}
           roleServices:
-            - blueReferenceName: ${blue_release_name}
-              greenReferenceName: ${green_release_name}
+            - blueReferenceName: ${blue_release_name}-simplehelm
+              greenReferenceName: ${green_release_name}-simplehelm
               idleName: ${idle_name}
               liveName: ${live_name}
         execution:
