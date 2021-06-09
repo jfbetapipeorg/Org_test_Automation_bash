@@ -23,10 +23,10 @@ pipelines:
     configuration:
       environmentVariables:
         readOnly:
-          blue_release_name: "blue-simplehelm-${run_id}"
-          green_release_name: "green-simplehelm-${run_id}"
-          idle_name: "idle-simplehelm-${run_id}"
-          live_name: "live-simplehelm-${run_id}"
+          blue_release_name: "blue-hbgdeploy-1-${run_id}"
+          green_release_name: "green-hbgdeploy-1-${run_id}"
+          idle_name: "idle-hbgdeploy-1-${run_id}"
+          live_name: "live-hbgdeploy-1-${run_id}"
           k8s_namespace: "pipe-master-pool"
     steps:
       - name: S_LX_HBGDeploy_5978_0001_1
