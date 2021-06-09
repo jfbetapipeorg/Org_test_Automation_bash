@@ -43,8 +43,8 @@ pipelines:
             - echo $request > request.json
             - jfrog rt repo-delete simplecharts --quiet || true
             - jfrog rt repo-create request.json
-            - jfrog rt u ${res_S_HelmDeploy_GitRepo_0014_resource_resourcePath}/tests/core/helmdeploy/simplehelm-0.3.0.tgz "simplecharts/"
-            - jfrog rt u ${res_S_HelmDeploy_GitRepo_0014_resource_resourcePath}/tests/core/helmdeploy/index.yaml "simplecharts/"
+            - jfrog rt u ${res_S_HelmDeploy_GitRepo_0014_resource_resourcePath}/tests/core/helmbluegreen/simplehelm-0.3.0.tgz "simplecharts/"
+            - jfrog rt u ${res_S_HelmDeploy_GitRepo_0014_resource_resourcePath}/tests/core/helmbluegreen/index.yaml "simplecharts/"
           onFailure:
             - jfrog rt repo-delete simplecharts --quiet
 
