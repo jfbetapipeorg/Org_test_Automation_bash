@@ -41,6 +41,5 @@ pipelines:
               liveName: ${live_name}
         execution:
           onComplete:
-            - jfrog rt repo-delete simplecharts --quiet || true
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true
