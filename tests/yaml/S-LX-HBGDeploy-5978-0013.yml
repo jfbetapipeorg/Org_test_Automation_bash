@@ -2,7 +2,7 @@ template: true
 valuesFilePath: ../values/gitRepoValues.yml
 
 resources:
-  - name: S_LX_HBGDeploy_5978_0012_git_resource
+  - name: S_LX_HBGDeploy_5978_0013_git_resource
     type: GitRepo
     configuration:
       gitProvider: s_gitHub
@@ -11,23 +11,23 @@ resources:
         include: master
 
 pipelines:
-  - name: S_LX_HBGDeploy_5978_0012
+  - name: S_LX_HBGDeploy_5978_0013
     configuration:
       environmentVariables:
         readOnly:
-          blue_release_name: "blue-hbgdeploy-12-${run_id}"
-          green_release_name: "green-hbgdeploy-12-${run_id}"
-          idle_name: "idle-hbgdeploy-12-${run_id}"
-          live_name: "live-hbgdeploy-12-${run_id}"
+          blue_release_name: "blue-hbgdeploy-13-${run_id}"
+          green_release_name: "green-hbgdeploy-13-${run_id}"
+          idle_name: "idle-hbgdeploy-13-${run_id}"
+          live_name: "live-hbgdeploy-13-${run_id}"
           k8s_namespace: "pipe-master-pool"
     steps:
-      - name: S_LX_HBGDeploy_5978_0012_1
+      - name: S_LX_HBGDeploy_5978_0013_1
         type: HelmBlueGreenDeploy
         configuration:
           integrations:
             - name: s_kubernetes
           inputResources:
-            - name: S_LX_HBGDeploy_5978_0012_git_resource
+            - name: S_LX_HBGDeploy_5978_0013_git_resource
           chartPath: tests/core/helmbluegreen/simplehelm
           namespace: ${k8s_namespace}
           blueReleaseName: ${blue_release_name}
@@ -38,6 +38,7 @@ pipelines:
               idleName: ${idle_name}
               liveName: ${live_name}
           lint: true
+          lintFlags: "--strict"
         execution:
           onComplete:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
