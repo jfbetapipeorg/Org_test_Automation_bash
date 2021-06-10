@@ -44,6 +44,9 @@ pipelines:
             - helm plugin install https://github.com/rimusz/helm-tiller
             - helm tiller start-ci ${k8s_namespace}
             - export HELM_HOST=127.0.0.1:44134
+          onSuccess:
+            - helm status ${blue_release_name}
+            - kubectl get service ${idle_name}
           onComplete:
             - helm delete ${blue_release_name} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true

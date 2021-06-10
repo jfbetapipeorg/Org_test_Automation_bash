@@ -42,6 +42,10 @@ pipelines:
           lint: true
           test: true
         execution:
+          onSuccess:
+            - helm3 status ${blue_release_name}
+            - kubectl get service ${idle_name}
+            - kubectl get pod ${blue_release_name}-simplehelm-test-connection
           onComplete:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true

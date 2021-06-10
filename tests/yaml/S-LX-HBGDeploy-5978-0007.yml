@@ -38,6 +38,9 @@ pipelines:
               idleName: ${idle_name}
               liveName: ${live_name}
         execution:
+          onSuccess:
+            - helm3 status ${blue_release_name}
+            - kubectl get service ${idle_name}
           onFailure:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - helm3 delete ${green_release_name} --namespace ${k8s_namespace} || true
@@ -53,6 +56,8 @@ pipelines:
             - name: s_kubernetes
           deployStep: S_LX_HBGDeploy_5978_0007_1
         execution:
+          onSuccess:
+            - kubectl get service ${live_name}
           onFailure:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - helm3 delete ${green_release_name} --namespace ${k8s_namespace} || true
@@ -78,6 +83,11 @@ pipelines:
               idleName: ${idle_name}
               liveName: ${live_name}
         execution:
+          onSuccess:
+            - helm3 status ${blue_release_name}
+            - helm3 status ${green_release_name}
+            - kubectl get service ${idle_name}
+            - kubectl get service ${live_name}
           onComplete:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - helm3 delete ${green_release_name} --namespace ${k8s_namespace} || true

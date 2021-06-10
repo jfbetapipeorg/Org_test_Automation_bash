@@ -41,6 +41,9 @@ pipelines:
               liveName: ${live_name}
           test: true
         execution:
+          onSuccess:
+            - helm3 status ${blue_release_name}
+            - kubectl get service ${idle_name}
           onComplete:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true
