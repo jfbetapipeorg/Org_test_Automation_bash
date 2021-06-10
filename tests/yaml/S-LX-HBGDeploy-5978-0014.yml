@@ -31,7 +31,9 @@ pipelines:
           chartPath: tests/core/helmbluegreen/simplehelm
           namespace: ${k8s_namespace}
           blueReleaseName: ${blue_release_name}
+          blueFlags: "--wait"
           greenReleaseName: ${green_release_name}
+          greenFlags: "--wait"
           roleServices:
             - blueReferenceName: ${blue_release_name}-simplehelm
               greenReferenceName: ${green_release_name}-simplehelm
