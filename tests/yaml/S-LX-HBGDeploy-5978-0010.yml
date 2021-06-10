@@ -39,6 +39,11 @@ pipelines:
               idleName: ${idle_name}
               liveName: ${live_name}
         execution:
+          onStart:
+            - helm init --client-only
+            - helm plugin install https://github.com/rimusz/helm-tiller
+            - helm tiller start ${k8s_namespace}
           onComplete:
             - helm uninstall ${blue_release_name} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true
+            - helm tiller stop || true
