@@ -44,3 +44,4 @@ pipelines:
           onComplete:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true
+            - kubectl delete pod ${blue_release_name}-simplehelm-test-connection --namespace ${k8s_namespace} || true
