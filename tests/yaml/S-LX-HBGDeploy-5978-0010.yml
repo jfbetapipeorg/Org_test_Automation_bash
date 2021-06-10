@@ -40,7 +40,7 @@ pipelines:
               liveName: ${live_name}
         execution:
           onStart:
-            - helm init --client-only --stable-repo-url https://charts.helm.sh/stable"
+            - helm init --client-only --stable-repo-url https://charts.helm.sh/stable
             - helm plugin install https://github.com/rimusz/helm-tiller
             - helm tiller start ${k8s_namespace}
           onComplete:
