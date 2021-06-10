@@ -45,6 +45,6 @@ pipelines:
             - helm tiller start-ci ${k8s_namespace}
             - export HELM_HOST=127.0.0.1:44134
           onComplete:
-            - helm uninstall ${blue_release_name} || true
+            - helm delete ${blue_release_name} || true
             - kubectl delete service ${idle_name} --namespace ${k8s_namespace} || true
             - helm tiller stop || true
