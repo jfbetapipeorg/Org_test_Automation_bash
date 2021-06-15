@@ -55,7 +55,8 @@ pipelines:
           deployStep: S_LX_HBGCleanUp_5978_0001_1
         execution:
           onSuccess:
-            - helm3 status ${blue_release_name}; if [[ $? != 1 ]]; then exit 1; fi
+            - idleReleaseStatus=$("helm3 status ${blue_release_name}")
+            - if [ ! -z "$idleReleaseStatus" ]; then return 1; fi
             - kubectl get service ${idle_name}
           onComplete:
             - helm3 delete ${blue_release_name} --namespace ${k8s_namespace} || true
