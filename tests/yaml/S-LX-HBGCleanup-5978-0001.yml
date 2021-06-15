@@ -55,7 +55,7 @@ pipelines:
           deployStep: S_LX_HBGCleanUp_5978_0001_1
         execution:
           onSuccess:
-            - idleReleaseStatus=$("helm3 status ${blue_release_name}")
+            - idleReleaseStatus=$(helm3 status "${blue_release_name}")
             - if [ ! -z "$idleReleaseStatus" ]; then return 1; fi
             - kubectl get service ${idle_name}
           onComplete:
