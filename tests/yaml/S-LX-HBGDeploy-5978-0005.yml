@@ -71,7 +71,7 @@ pipelines:
           outputResources:
             - name: S_LX_HBGDeploy_5978_0005_ReleaseBundle_resource
 
-      - name: deploy_helm_chart_from_generic_repo
+      - name: S_LX_HBGDeploy_5978_0005_3
         type: HelmBlueGreenDeploy
         configuration:
           integrations:
