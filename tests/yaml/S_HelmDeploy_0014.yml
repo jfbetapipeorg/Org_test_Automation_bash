@@ -67,6 +67,7 @@ pipelines:
           lint: true
           lintFlags: "--strict"
           test: true
+          testFlags: "-n ${k8s_namespace}"
         execution:
           onComplete:
             - jfrog rt repo-delete simplecharts --quiet || true

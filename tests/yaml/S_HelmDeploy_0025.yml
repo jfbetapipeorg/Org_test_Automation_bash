@@ -75,4 +75,4 @@ pipelines:
         execution:
           onComplete:
             - jfrog rt repo-delete simplecharts --quiet || true
-            - helm3 delete simplehelm-from-repo-$run_id --namespace $K8S_NAMESPACE
+            - helm3 delete simplehelm-from-repo-$run_id

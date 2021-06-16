@@ -1,0 +1,27 @@
+template: true
+valuesFilePath: ../values/gitRepoValues.yml
+
+resources:
+  - name: S_MvnBuild_5680_0023_GitRepo
+    type: GitRepo
+    configuration:
+      gitProvider: s_gitHub
+      path: {{ .Values.GitHub.Org_test_Automation_bash.path }}
+      branches:
+        include: {{gitBranch}}
+
+pipelines:
+  - name: pipeline_S_MvnBuild_5680_0023
+    steps:
+      - name: S_MvnBuild_5680_0023
+        type: MvnBuild
+        configuration:
+          environmentVariables:
+            force_scan: "true"
+            fail_scan: "true"
+          inputResources:
+            - name: S_MvnBuild_5680_0023_GitRepo
+          integrations:
+            - name: s_artifactory
+          forceXrayScan: "${force_scan}"
+          failOnScan: "${fail_scan}"
