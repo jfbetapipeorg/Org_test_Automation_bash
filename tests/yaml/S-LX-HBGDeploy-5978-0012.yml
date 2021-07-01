@@ -19,7 +19,7 @@ pipelines:
           green_release_name: "green-hbgdeploy-12-${run_id}"
           idle_name: "idle-hbgdeploy-12-${run_id}"
           live_name: "live-hbgdeploy-12-${run_id}"
-          k8s_namespace: "pipe-master-pool"
+          k8s_namespace: {{ .Values.Kubernetes.namespace }}
     steps:
       - name: S_LX_HBGDeploy_5978_0012_1
         type: HelmBlueGreenDeploy

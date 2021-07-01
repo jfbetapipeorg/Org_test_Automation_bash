@@ -19,7 +19,7 @@ pipelines:
           green_release_name: "green-hbgcleanup-2-${run_id}"
           idle_name: "idle-hbgcleanup-2-${run_id}"
           live_name: "live-hbgcleanup-2-${run_id}"
-          k8s_namespace: "pipe-master-pool"
+          k8s_namespace: {{ .Values.Kubernetes.namespace }}
     steps:
       - name: S_LX_HBGCleanUp_5978_0002_1
         type: HelmBlueGreenDeploy
